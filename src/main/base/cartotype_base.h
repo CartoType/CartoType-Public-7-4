@@ -1,6 +1,6 @@
 /*
 cartotype_base.h
-Copyright (C) 2004-2020 CartoType Ltd.
+Copyright (C) 2004-2021 CartoType Ltd.
 See www.cartotype.com for more information.
 */
 
@@ -859,15 +859,17 @@ enum class TMapObjectType
     None = -1
     };
 
-/** Values used in the user-data value of polygon objects in the vector tile drawing system. */
-enum class TPolygonClipType
+/** Values used in the user-data value of objects in the vector tile drawing system. */
+enum class TVectorTileObjectClipType
     {
-    /** This polygon can be drawn normally, */
+    /** This object can be drawn normally, */
     Standard,
-    /** This polygon has been clipped and only the interior should be drawn, not the border. */
+    /** This is a polygon that has been clipped and only the interior should be drawn, not the border. */
     Fill,
     /** This is a polyline representing the clipped border of a polygon. */
-    Border
+    Border,
+    /** This is a highlight using the first highlight style of a line style. Subsequent highlight styles use the successive values 0x10001, 0x10002, etc.  */
+    Highlight = 0x10000
     };
 
 /** Positions for notices like the legend or scale bar. Use TExtendedNoticePosition for greater control. */
@@ -992,7 +994,7 @@ inline double GreatCircleDistanceInMeters(double aLong1,double aLat1,double aLon
     return angle * KEquatorialRadiusInMetres;
     }
 
-template<class T> static inline void Reverse(T* aStart,size_t aLength)
+template<class T> inline void Reverse(T* aStart,size_t aLength)
     {
     if (aLength > 1)
         {
@@ -1006,6 +1008,37 @@ template<class T> static inline void Reverse(T* aStart,size_t aLength)
             end--;
             }
         }
+    }
+
+/** Returns the area of a polygon made of points with members iX and iY. */
+template<class point_t> inline double Area(const point_t* aPointArray,size_t aPointCount)
+    {
+    if (aPointCount < 3)
+        return 0;
+    double area = 0;
+    const point_t* p = aPointArray;
+    const point_t* end = aPointArray + aPointCount;
+    const point_t* prev = end - 1;
+    double origin_x = prev->iX;
+    double origin_y = prev->iY;
+    double prev_x = 0;
+    double prev_y = 0;
+    while (p < end)
+        {
+        double x = p->iX - origin_x;
+        double y = p->iY - origin_y;
+        area += (x + prev_x) * (y - prev_y);
+        prev_x = x;
+        prev_y = y;
+        p++;
+        }
+    return area / 2.0;
+    }
+
+/** Returns the area of a polygon represented as a vector of points with members iX and iY. */
+template<class contour_t> inline double Area(const contour_t& aContour)
+    {
+    return Area(aContour.data(),aContour.size());
     }
 
 double SphericalPolygonArea(const TCoordSet& aCoordSet) noexcept;

@@ -18,6 +18,8 @@ class CMapObject;
 template<class point_t> class CGeneralGeometry
     {
     public:
+    using contour_t = std::vector<point_t>;
+
     /** Creates an empty open geometry object using map coordinates. */
     CGeneralGeometry() { }
     /** Creates a geometry object with given coordinates and open/closed status. */
@@ -84,6 +86,8 @@ template<class point_t> class CGeneralGeometry
     TCoordType CoordType() const { return m_coord_type; }
     /** Returns the number of contours. */
     size_t ContourCount() const { return m_contour_array.size(); }
+    /** Returns a contour selected by its index. */
+    const contour_t& Contour(size_t aIndex) const { return m_contour_array[aIndex]; }
     /** Returns the number of points in a given contour. */
     size_t PointCount(size_t aContourIndex) const { return m_contour_array[aContourIndex].size(); }
     /** Returns a point identified by its contour index and point index. */
@@ -147,7 +151,6 @@ template<class point_t> class CGeneralGeometry
         }
 
     private:
-    using contour_t = std::vector<point_t>;
     std::vector<contour_t> m_contour_array = std::vector<contour_t>(1);
     TCoordType m_coord_type = TCoordType::Map;
     bool m_closed = false;

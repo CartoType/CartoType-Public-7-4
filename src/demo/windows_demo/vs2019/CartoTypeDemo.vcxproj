@@ -109,7 +109,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>libEGL.lib;libGLESv2.lib;..\..\..\..\bin\$(VisualStudioVersion)\$(Platform)\$(Configuration)\cartotype.lib</AdditionalDependencies>
       <OutputFile>..\..\..\..\bin\$(VisualStudioVersion)\$(Platform)\$(Configuration)\CartoTypeDemo.exe</OutputFile>
-      <AdditionalLibraryDirectories>G:\angle\build\Debug_win32\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\..\..\bin\$(VisualStudioVersion)\$(Platform)\$(Configuration);G:\angle\build\Debug_win32\lib</AdditionalLibraryDirectories>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -136,7 +136,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>libEGL.lib;libGLESv2.lib;..\..\..\..\bin\$(VisualStudioVersion)\$(Platform)\$(Configuration)\cartotype.lib</AdditionalDependencies>
       <OutputFile>..\..\..\..\bin\$(VisualStudioVersion)\$(Platform)\$(Configuration)\CartoTypeDemo.exe</OutputFile>
-      <AdditionalLibraryDirectories>G:\angle\build\Debug_x64\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\..\..\bin\$(VisualStudioVersion)\$(Platform)\$(Configuration);G:\angle\build\Debug_x64\lib</AdditionalLibraryDirectories>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -165,7 +165,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>libEGL.lib;libGLESv2.lib;..\..\..\..\bin\$(VisualStudioVersion)\$(Platform)\$(Configuration)\cartotype.lib</AdditionalDependencies>
       <OutputFile>..\..\..\..\bin\$(VisualStudioVersion)\$(Platform)\$(Configuration)\CartoTypeDemo.exe</OutputFile>
-      <AdditionalLibraryDirectories>G:\angle\build\Release_win32\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\..\..\bin\$(VisualStudioVersion)\$(Platform)\$(Configuration);G:\angle\build\Release_win32\lib</AdditionalLibraryDirectories>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -195,7 +195,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>libEGL.lib;libGLESv2.lib;..\..\..\..\bin\$(VisualStudioVersion)\$(Platform)\$(Configuration)\cartotype.lib</AdditionalDependencies>
       <OutputFile>..\..\..\..\bin\$(VisualStudioVersion)\$(Platform)\$(Configuration)\CartoTypeDemo.exe</OutputFile>
-      <AdditionalLibraryDirectories>G:\angle\build\Release_x64\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\..\..\bin\$(VisualStudioVersion)\$(Platform)\$(Configuration);G:\angle\build\Release_x64\lib</AdditionalLibraryDirectories>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>

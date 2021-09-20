@@ -30,6 +30,7 @@ See www.cartotype.com for more information.
 
 #ifdef CARTOTYPE_LOW_LEVEL_FILE_IO
     #if defined(ANDROID)
+        #include <unistd.h>
         #include <fcntl.h>
         #include <errno.h>
     #else
@@ -437,11 +438,11 @@ class CBinaryInputFile
 #if (defined(_MSC_VER) && !defined(_WIN32_WCE))
         return _telli64(iFile);
 #elif defined (__APPLE__)
-        return lseek(iFile,SEEK_SET,0);
+        return lseek(iFile,0,SEEK_CUR);
 #elif (defined(_POSIX_VERSION) || defined(__MINGW32__))
-        return lseek64(iFile,SEEK_SET,0);
+        return lseek64(iFile,0,SEEK_CUR);
 #else
-        return lseek(iFile,SEEK_SET,0);
+        return lseek(iFile,0,SEEK_CUR);
 #endif
         }
 

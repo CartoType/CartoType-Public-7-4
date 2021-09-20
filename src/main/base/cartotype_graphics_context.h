@@ -745,8 +745,6 @@ class MLabelHandler
     virtual ~MLabelHandler() { }
     /** Handle a label, passed as a 32bpp RGBA bitmap to be drawn at aTopLeft. The label is associated with the position aHotSpot. */
     virtual void operator()(const TBitmap& aLabelBitmap,const TPoint& aTopLeft,const TPoint& aHotSpot) = 0;
-    /** Start a new label layer; subsequent labels are drawn over previous ones. */
-    virtual void NewLabelLayer() = 0;
     };
 
 /**

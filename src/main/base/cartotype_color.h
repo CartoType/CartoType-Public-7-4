@@ -124,6 +124,7 @@ The colors are blended with colors in a style, using their alpha values as the b
 class TBlendStyle
     {
     public:
+    /** The equality operator. */
     bool operator==(const TBlendStyle& aOther) const
         {
         return iStyles == aOther.iStyles &&
@@ -133,6 +134,7 @@ class TBlendStyle
                iTextGlowColor == aOther.iTextGlowColor &&
                iIconColor == aOther.iIconColor;
         }
+    /** The inequality operator. */
     bool operator!=(const TBlendStyle& aOther) const { return !(*this == aOther); }
 
     /**

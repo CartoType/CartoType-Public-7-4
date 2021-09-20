@@ -77,7 +77,7 @@ template<class MTraverser> void Traverse(MTraverser& aTraverser,const TPoint* aP
     }
 
 /**
-Traverses a sequence of TOutlinePoint objects, extracting lines and curves and calling functions to process them.
+Traverses a sequence of outline point objects, extracting lines and curves and calling functions to process them.
 
 The functions called are
 
@@ -99,7 +99,7 @@ off-curve control points, and set the current point to aPoint3:
 
 void CubicTo(const TPoint& aPoint1,const TPoint& aPoint2,const TPoint& aPoint3)
 */
-template<class MTraverser> void Traverse(MTraverser& aTraverser,const TOutlinePoint* aPoint,size_t aPoints,bool aClosed)
+template<class traverser_t,class point_t> void Traverse(traverser_t& aTraverser,const point_t* aPoint,size_t aPoints,bool aClosed)
     {
     if (aPoints < 2)
         return;
@@ -108,10 +108,10 @@ template<class MTraverser> void Traverse(MTraverser& aTraverser,const TOutlinePo
     assert(aPoint->iType != TPointType::Cubic);
 
     size_t last = aPoints - 1;
-    const TOutlinePoint* limit = aPoint + last;
-    TPoint v_start = aPoint[0];
-    TPoint v_last = aPoint[last];
-    const TOutlinePoint* point = aPoint;
+    const point_t* limit = aPoint + last;
+    point_t v_start = aPoint[0];
+    point_t v_last = aPoint[last];
+    const point_t* point = aPoint;
 
     /* Check first point to determine origin. */
     if (point->iType == TPointType::Quadratic)
@@ -126,10 +126,10 @@ template<class MTraverser> void Traverse(MTraverser& aTraverser,const TOutlinePo
         else
             {
             /*
-                If both first and last points are conic,
-                start at their middle and record its position
-                for closure.
-                */
+            If both first and last points are conic,
+            start at their middle and record its position
+            for closure.
+            */
             v_start.iX = (v_start.iX + v_last.iX) / 2;
             v_start.iY = (v_start.iY + v_last.iY) / 2;
             v_last = v_start;
@@ -150,11 +150,11 @@ template<class MTraverser> void Traverse(MTraverser& aTraverser,const TOutlinePo
                 
             case TPointType::Quadratic:
                 {
-                const TPoint* v_control = point;
+                const point_t* v_control = point;
                 while (point < limit)
                     {
                     point++;
-                    const TOutlinePoint* cur_point = point;
+                    const point_t* cur_point = point;
                     if (point->iType == TPointType::OnCurve)
                         {
                         aTraverser.QuadraticTo(*v_control,*cur_point);
@@ -162,7 +162,7 @@ template<class MTraverser> void Traverse(MTraverser& aTraverser,const TOutlinePo
                         }
                     if (point->iType != TPointType::Quadratic)
                         return; // invalid outline
-                    TPoint v_middle((v_control->iX + cur_point->iX) / 2,(v_control->iY + cur_point->iY) / 2);
+                    point_t v_middle((v_control->iX + cur_point->iX) / 2,(v_control->iY + cur_point->iY) / 2);
                     aTraverser.QuadraticTo(*v_control,v_middle);
                     v_control = cur_point;
                     }
@@ -178,8 +178,8 @@ template<class MTraverser> void Traverse(MTraverser& aTraverser,const TOutlinePo
                 {
                 if (point + 1 > limit || point->iType != TPointType::Cubic)
                     return; // invalid outline
-                const TPoint* vec1 = point++;
-                const TPoint* vec2 = point++;
+                const point_t* vec1 = point++;
+                const point_t* vec2 = point++;
                 if (point <= limit)
                     {
                     aTraverser.CubicTo(*vec1,*vec2,*point);

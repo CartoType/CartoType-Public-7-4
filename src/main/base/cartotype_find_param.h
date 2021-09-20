@@ -42,7 +42,7 @@ enum class TPointOfInterestType
 class TFindNearbyParam
     {
     public:
-    /** The type of place to search for. The value None causes iName to be analyzed to narrow the search. */
+    /** The type of place to search for. The value None causes iText only to be used. */
     TPointOfInterestType iType;
     /** The name, full or partial, of the place. */
     CString iText;

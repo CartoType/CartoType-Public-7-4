@@ -1,2 +1,2 @@
 #define CARTOTYPE_VERSION "7.4"
-#define CARTOTYPE_BUILD "1"
+#define CARTOTYPE_BUILD "41"
