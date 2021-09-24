@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 
 <!--
-Copyright (C) 2020 CartoType Ltd.
+Copyright (C) 2020-2021 CartoType Ltd.
 For more information see http://www.cartotype.com.
 -->
 
@@ -232,10 +232,10 @@ For more information see http://www.cartotype.com.
             </scale>
         </macro>
         <macro id='island-label'>
-            <label case='assume-title' color='darkslategrey' font-size='150m,6pt,18pt' font-style='italic' font-weight='bold' glow='white' glowWidth='7%,0.5pt' maxPolygonLabelLength='4' position='horizontal' priority='-4'/>
+            <label case='assume-title' color='darkslategrey' font-size='150m,6pt,18pt' font-style='italic' font-weight='bold' glow='white' glowWidth='7%,0.5pt' position='horizontal' wrapWidth='12em' priority='-4'/>
         </macro>
         <macro id='point-island-label'>
-            <label case='assume-title' color='darkslategrey' font-size='150m,6pt,18pt' font-style='italic' font-weight='bold' glow='white' glowWidth='7%,0.5pt' maxPolygonLabelLength='4' maxScale='50000' position='point' priority='-4'/>
+            <label case='assume-title' color='darkslategrey' font-size='150m,6pt,18pt' font-style='italic' font-weight='bold' glow='white' glowWidth='7%,0.5pt' maxScale='50000' position='point' wrapWidth='12em' priority='-4'/>
         </macro>
         <macro id='pushpin'>
             <condition exp='Type le ~type~'>
@@ -298,7 +298,7 @@ For more information see http://www.cartotype.com.
             <condition exp='OsmType=="isl"'>
                 <scale max='40000'>
                     <condition exp='(Type bitand 0xFFF) gt 5'>
-                        <label case='assume-title' color='darkslategrey' font-size='100m,5pt,18pt' font-style='italic' font-weight='bold' opacity='0.4' priority='2'/>
+                        <label case='assume-title' color='darkslategrey' font-size='100m,5pt,18pt' font-style='italic' font-weight='bold' opacity='0.4' priority='2' wrapWidth='12em'/>
                     </condition>
                 </scale>
                 <scale min='40000' max='1000000'>

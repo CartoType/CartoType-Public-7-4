@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 
 <!--
-Copyright (C) 2013-2020 CartoType Ltd.
+Copyright (C) 2013-2021 CartoType Ltd.
 For more information see http://www.cartotype.com.
 -->
 
@@ -35,11 +35,11 @@ For more information see http://www.cartotype.com.
         </macro>
 
         <macro id='island-label'>
-            <label color='#444' glow='white' glowWidth='7%,1' case='assume-title' position='horizontal' maxPolygonLabelLength='4' wrapWidth='20em' font-size='240m,5pt,16pt' font-style='italic' priory='-4'/>
+            <label color='#444' glow='white' glowWidth='7%,1' case='assume-title' position='horizontal' wrapWidth='12em' font-size='240m,5pt,16pt' font-style='italic' priory='-4'/>
         </macro>
 
         <macro id='point-island-label'>
-            <label maxScale='750000' color='#444' glow='white' glowWidth='7%,1' case='assume-title' position='point' maxPolygonLabelLength='4' wrapWidth='20em' font-size='240m,5pt,16pt' font-style='italic' priory='-4'/>
+            <label maxScale='750000' color='#444' glow='white' glowWidth='7%,1' case='assume-title' position='point' wrapWidth='12em' font-size='240m,5pt,16pt' font-style='italic' priory='-4'/>
         </macro>
 
         <macro id='route-circle'>
@@ -344,7 +344,7 @@ For more information see http://www.cartotype.com.
             <shape fill='#AA9'/>
         </layer>
         <layer name='urban-area'>
-            <shape fill='#FCFBE7+0.02black'/>
+            <shape fill='#FCFBE7+0.1black'/>
         </layer>
     </zoom>
 

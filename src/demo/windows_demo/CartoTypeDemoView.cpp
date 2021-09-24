@@ -1852,6 +1852,7 @@ void CCartoTypeDemoView::SetProfile(size_t aProfileIndex)
         iFramework->SetBuiltInProfile(aProfileIndex);
         if (aProfileIndex < b)
             {
+            iRouteProfileIndex = aProfileIndex;
             iShortestRoute = iFramework->BuiltInProfile(aProfileIndex)->iShortest;
             iUseGradients = iFramework->BuiltInProfile(aProfileIndex)->iGradientFlags != 0;
             }

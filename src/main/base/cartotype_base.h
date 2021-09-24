@@ -124,7 +124,9 @@ template<class T> class TPoint2
         }
     /**
     Returns the cross product of two vectors.
-    The cross product of two unit vectors is the sine of the angle between them, and is always positive.
+    The cross product of two unit vectors is the sine of the angle swept out
+    by going from this vector to the other vector in an anticlockwise direction,
+    and may be positive or negative.
     */
     T CrossProduct(const TPoint2<T>& aOther) const noexcept
         {
